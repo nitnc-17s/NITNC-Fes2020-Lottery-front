@@ -1,6 +1,14 @@
 <template>
   <div>
-    operation
+    key:<input type="text" v-model="key" /><br>
+    景品番号:<input type="number" v-model="num" /><br>
+    operate:
+    <select v-model="operate">
+      <option hidden>Please select command</option>
+      <option v-for="n of command" :key="n">{{ n }}</option>
+    </select>
+    <br>
+    <input type="button" value="send" @click=sendData />
   </div>
 </template>
 
@@ -8,22 +16,27 @@
 export default {
   data () {
     return {
+      socket: new WebSocket('ws://localhost:8080/ws'),
       num: 0,
-      content: "null",
-      name: "null",
-      huri: "null",
-      class: "null"
+      operate: "null",
+      key: "null",
+      command: [
+        "init",
+        "show id",
+        "show prize",
+        "show winner",
+        "lottery"
+      ]
     }
   },
   methods: {
-    setData() {
-      this.$store.commit('dataSet', [
-        this.num,
-        this.content,
-        this.name,
-        this.huri,
-        this.class
-      ])
+    sendData () {
+      console.log(this.operate)
+      this.socket.send(JSON.stringify({
+        api_key: "key",
+        prize_id: this.num,
+        operation: this.operate
+      }))
     }
   }
 }
