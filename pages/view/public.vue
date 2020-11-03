@@ -7,12 +7,7 @@
       <span>{{content}}</span>
     </div>
     <div class="win-name">
-      <span>
-        <ruby>
-          <rb>{{winName}}</rb>
-          <rt>{{winHuri}}</rt>
-        </ruby>
-      </span>
+      <span>{{winName}}</span>
     </div>
     <div class="win-class">
       <span>
@@ -27,11 +22,11 @@ export default {
   data () {
     return {
       socket: new WebSocket('ws://localhost:8080/ws'),
-      num: 1,
-      content: "ヌベヂョンヌゾジョンベルミッティスモゲロンボョｗｗｗｗｗｗイヒーｗｗイヒヒｗ",
-      winName: "菊田一真",
-      winHuri: "きくたかずま",
-      winClass: "４I"
+      num: 0,
+      content: "景品名",
+      winName: "名前",
+      winHuri: "ふりがな",
+      winClass: "クラス"
     }
   },
   created () {
@@ -68,7 +63,7 @@ export default {
   height: 100%;
   display: grid;
   grid-template-rows: 40% 1fr;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: 20% 1fr;
 
   .number{
     border-bottom: 4px black solid;
@@ -93,7 +88,7 @@ export default {
     grid-row: 2;
     grid-column: 2;
 
-    font-size: 15rem;
+    font-size: 11rem;
   }
 
   .win-class{
@@ -101,7 +96,7 @@ export default {
     grid-row: 2;
     grid-column: 1;
 
-    font-size: 15rem;
+    font-size: 11rem;
   }
 
   span{
