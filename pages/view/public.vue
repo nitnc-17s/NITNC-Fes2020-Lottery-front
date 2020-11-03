@@ -67,8 +67,8 @@ export default {
   border: 1px black solid;
   height: 100%;
   display: grid;
-  grid-template-rows: 40% 60%;
-  grid-template-columns: 20% 1fr;
+  grid-template-rows: 40% 1fr;
+  grid-template-columns: 30% 1fr;
 
   .number{
     border-bottom: 4px black solid;
