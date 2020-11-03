@@ -1,0 +1,116 @@
+<template>
+  <div class="container">
+    <div class="number">
+      <span>{{num}}</span>
+    </div>
+    <div class="content">
+      <span>{{content}}</span>
+    </div>
+    <div class="win-name">
+      <span>
+        <ruby>
+          <rb>{{winName}}</rb>
+          <rt>{{winHuri}}</rt>
+        </ruby>
+      </span>
+    </div>
+    <div class="win-class">
+      <span>
+        {{winClass}}
+      </span>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      socket: new WebSocket('ws://localhost:8080/ws'),
+      num: 1,
+      content: "ヌベヂョンヌゾジョンベルミッティスモゲロンボョｗｗｗｗｗｗイヒーｗｗイヒヒｗ",
+      winName: "菊田一真",
+      winHuri: "きくたかずま",
+      winClass: "４I"
+    }
+  },
+  created () {
+    this.socket.onmessage = (e) => {
+      this.dataSet(e)
+    }
+    this.socket.onopen = () => {
+      this.dataSet(e)
+      console.log("connecting")
+    }
+    this.socket.onerror = () => {
+      console.log("error")
+    }
+    this.socket.onclose = () => {
+      console.log("close")
+    }
+  },
+  methods: {
+    dataSet (e) {
+      const d  = JSON.parse(e.data)
+      this.num = d.prize.id
+      this.content = d.prize.name
+      this.winName = d.winner.name
+      this.winHuri = d.winner.name_furigana
+      this.winClass = d.winner.class
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.container{
+  border: 1px black solid;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 40% 60%;
+  grid-template-columns: 20% 1fr;
+
+  .number{
+    border-bottom: 4px black solid;
+    position: relative;
+    grid-row: 1;
+    grid-column: 1;
+
+    font-size: 15rem;
+  }
+
+  .content{
+    border-bottom: 4px black solid;
+    position: relative;
+    grid-row: 1;
+    grid-column: 2;
+
+    font-size: 5rem;
+  }
+
+  .win-name{
+    position: relative;
+    grid-row: 2;
+    grid-column: 2;
+
+    font-size: 15rem;
+  }
+
+  .win-class{
+    position: relative;
+    grid-row: 2;
+    grid-column: 1;
+
+    font-size: 15rem;
+  }
+
+  span{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform : translateX(-50%) translateY(-50%);
+  }
+}
+</style>
