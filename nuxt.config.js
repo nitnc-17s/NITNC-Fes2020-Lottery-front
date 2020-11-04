@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { API,WS } = process.env
+const { APIHost, WSHost } = process.env
 
 export default {
   ssr: false,
@@ -35,16 +35,19 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     '@nuxtjs/style-resources',
     '@nuxtjs/dotenv'
   ],
   env: {
-    API,
-    WS
+    APIHost,
+    WSHost
   },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    baseURL: 'https://api.crow31415.net'
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {

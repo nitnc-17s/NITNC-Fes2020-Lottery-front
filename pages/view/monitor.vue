@@ -26,7 +26,7 @@
 export default {
   data () {
     return {
-      socket: new WebSocket(`${process.env.WS}/ws`),
+      socket: new WebSocket(`${process.env.WSHost}/ws`),
       num: 0,
       content: "景品名",
       winName: "名前",
