@@ -26,7 +26,7 @@
 export default {
   data () {
     return {
-      socket: new WebSocket('ws://localhost:8080/ws'),
+      socket: new WebSocket(`${process.env.API}/ws`),
       num: 0,
       content: "景品名",
       winName: "名前",

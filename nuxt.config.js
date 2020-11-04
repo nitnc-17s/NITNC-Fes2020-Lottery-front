@@ -1,3 +1,6 @@
+require('dotenv').config()
+const { API } = process.env
+
 export default {
   ssr: false,
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -32,8 +35,12 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/dotenv'
   ],
+  env: {
+    API
+  },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},

@@ -16,7 +16,6 @@
 export default {
   data () {
     return {
-      socket: new WebSocket('ws://localhost:8080/ws'),
       num: 0,
       operate: "null",
       key: "null",
@@ -32,11 +31,18 @@ export default {
   methods: {
     sendData () {
       console.log(this.operate)
-      this.socket.send(JSON.stringify({
-        api_key: "key",
-        prize_id: this.num,
-        operation: this.operate
-      }))
+      this.$axious.$post(
+        `${process.env.API}/operation`,
+        JSON.stringify({
+          api_key: "key",
+          prize_id: this.num,
+          operation: this.operate
+        })
+      ).then((result) => {
+        console.log("done")
+      }).catch((err) => {
+        console.log("error")
+      });
     }
   }
 }
