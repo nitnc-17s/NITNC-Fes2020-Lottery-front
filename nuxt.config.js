@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { API } = process.env
+const { API,WS } = process.env
 
 export default {
   ssr: false,
@@ -39,7 +39,8 @@ export default {
     '@nuxtjs/dotenv'
   ],
   env: {
-    API
+    API,
+    WS
   },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
