@@ -8,7 +8,8 @@ yarn dev
 
 .env
 ```
-API = "wss://example.com"
+APIHost = "https://example.com" //API用
+WSHost = "wss://example.com" //WebSocket用
 ```
 
 

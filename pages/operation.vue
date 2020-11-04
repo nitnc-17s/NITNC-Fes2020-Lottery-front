@@ -32,7 +32,7 @@ export default {
     sendData () {
       console.log(this.operate)
       this.$axious.$post(
-        `${process.env.API}/operation`,
+        `${process.env.APIHost}/operation`,
         JSON.stringify({
           api_key: "key",
           prize_id: this.num,
