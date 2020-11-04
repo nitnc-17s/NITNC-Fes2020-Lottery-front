@@ -15,7 +15,7 @@ FROM node:10.23-alpine as builder
 WORKDIR /app
 COPY . .
 
-# ENV NODE_ENV=production
+ENV NODE_ENV=production
 RUN  apk add --no-cache curl git && cd /tmp && \
     curl -#L https://github.com/tj/node-prune/releases/download/v1.0.1/node-prune_1.0.1_linux_amd64.tar.gz | tar -xvzf- && \
     mv -v node-prune /usr/local/bin && rm -rvf *
