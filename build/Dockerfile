@@ -20,7 +20,7 @@ RUN  apk add --no-cache curl git && cd /tmp && \
     curl -#L https://github.com/tj/node-prune/releases/download/v1.0.1/node-prune_1.0.1_linux_amd64.tar.gz | tar -xvzf- && \
     mv -v node-prune /usr/local/bin && rm -rvf *
 
-RUN yarn --frozen-lockfile --non-interactive && yarn cache clean && node-prune
+RUN yarn --non-interactive && yarn cache clean && node-prune
 RUN yarn build
 
 
@@ -31,6 +31,7 @@ ENV HOST=0.0.0.0
 
 ADD package.json ./
 ADD nuxt.config.js ./
+ADD .env ./
 
 COPY --from=builder ./app/node_modules ./node_modules/
 COPY --from=builder ./app/.nuxt ./.nuxt/
