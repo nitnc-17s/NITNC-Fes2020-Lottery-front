@@ -44,11 +44,6 @@ export default {
     WSHost
   },
 
-  // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {
-    baseURL: 'https://api.crow31415.net'
-  },
-
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
   }
