@@ -34,7 +34,7 @@ export default {
       this.$axios.$post(
         `${process.env.APIHost}/operation`,
         JSON.stringify({
-          api_key: "key",
+          api_key: this.key,
           prize_id: this.num,
           operation: this.operate
         })
