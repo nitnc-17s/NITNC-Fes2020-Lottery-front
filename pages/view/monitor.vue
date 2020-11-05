@@ -52,7 +52,7 @@ export default {
   methods: {
     dataSet (e) {
       const d  = JSON.parse(e.data)
-      this.num = d.prize.id
+      this.num = d.prize.id > 0 ? d.prize.id : ""
       this.content = d.prize.name
       this.winName = d.winner.name
       this.winHuri = d.winner.name_furigana
