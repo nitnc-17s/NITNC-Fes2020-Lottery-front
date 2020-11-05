@@ -32,12 +32,11 @@ export default {
     sendData () {
       console.log(this.operate)
       this.$axios.$post(
-        `${process.env.APIHost}/operation`,
-        JSON.stringify({
+        `${process.env.APIHost}/operation`,{
           api_key: this.key,
-          prize_id: this.num,
+          prize_id: Number(this.num),
           operation: this.operate
-        })
+        }
       ).then((result) => {
         console.log("done")
       }).catch((err) => {
